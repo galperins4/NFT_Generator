@@ -12,6 +12,7 @@ Python NFT Generator
 ## Configuration and Usage
 
 1. Update Config in main.py (under import statements)
+
 | Config Option | Default Setting | Description | 
 | :--- | :---: | :--- |
 | project_name | 0 | Name of Project |
