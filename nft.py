@@ -113,7 +113,6 @@ if __name__ == '__main__':
     total_attributes = len(attributes_mapping)
     attributes = [i for i in attributes_mapping.keys()]
 
-    print(attributes_mapping)
     # generate random images
     images = {}
     for x in range(0, total_nft):
