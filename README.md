@@ -15,7 +15,7 @@ Python NFT Generator
 
 | Config Option | Default Setting | Description | 
 | :--- | :---: | :--- |
-| project_name | 0 | Name of Project |
+| project_name | project name | Name of Project |
 | base_uri | https://ipfs.io/ipfs/ | URI link for where NFT is hosted (e.g., IPFS) |
 | total_nft| 2 | How many NFT's you want to mint |
 | rand_seed| 345698135 | Random value for pseudo-random number generator |
