@@ -38,7 +38,6 @@ The script will do the following:
 Inspiration for this script was drawn from the public repositories of the creators of BitBirds and Weird Whales. Their main profiles are linked below:
 
 [nft-fun](https://github.com/nft-fun)
-
 [benyaminahmed](https://github.com/benyaminahmed)
 
 ## Changelog
