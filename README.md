@@ -20,7 +20,7 @@ Python NFT Generator
 | total_nft| 2 | How many NFT's you want to mint |
 | rand_seed| 345698135 | Random value for pseudo-random number generator |
 
-2. Load .png image files into the attribute folders. An example has been provided to test. The nomenclature is layer-attribute. So for example 1-background is the first layer used which contains background images. 
+2. Load .png image files into the attributes folders. An few examples have been provided to test the script. The nomenclature of the folders is as follows: layer-attribute. So for example 1-background is the first layer used which contains background images. 
 
 Important: All image files should be the same size (e.g., 400 x 400 pixels)
 
