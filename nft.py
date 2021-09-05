@@ -7,7 +7,7 @@ from random import seed
 dirname = os.path.dirname(__file__)
 
 #config items
-project_name = "project name
+project_name = "project name"
 base_uri = "https://ipfs.io/ipfs/"
 total_nft = 2
 rand_seed = 345698135
