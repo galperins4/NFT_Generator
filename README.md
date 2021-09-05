@@ -25,7 +25,7 @@ Python NFT Generator
 Important: All image files should be the same size (e.g., 400 x 400 pixels)
 
 3. Run the script
-``` python3 main.py```
+``` python3 nft.py```
 
 The script will do the following:
  - Generate Images
