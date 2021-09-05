@@ -32,7 +32,7 @@ The script will do the following:
  - Run a duplicate check (Note: this could occur with a low number of attributes/traits)
  - Output NFT images in to the ./images folder
  - Output Metadata for images in the ./metadata folder
- - Output a mint stats.json file with the full collection statistics (e.g., how many of each attribute/trait was selected
+ - Output a mint stats.json file with the full collection statistics (e.g., how many of each attribute/trait was selected)
 
 ## Credits
 Inspiration for this script was drawn from the public repositories of the creators of BitBirds and Weird Whales. Their main profiles are linked below:
