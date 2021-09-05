@@ -11,7 +11,7 @@ Python NFT Generator
 
 ## Configuration and Usage
 
-1. Update config items in main.py (under import statements)
+1. Update config items in nft.py (under import statements)
 
 | Config Option | Default Setting | Description | 
 | :--- | :---: | :--- |
