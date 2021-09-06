@@ -116,19 +116,11 @@ def confirm_trait_rarity(mapping):
 
 def f(path):
     d = {}
-    dirs = sorted(os.listdir(path))
+    dirs = sorted([f for f in os.listdir(path) if not f.startswith('.')])
     for i in dirs:
-        if i != ".DS_Store":
-            # skips .DS_Store
-            sub_dir = os.path.join(path, i)
-            files = sorted(os.listdir(sub_dir))
-            names = [x.replace(".png", "") for x in files]
-            if ".DS_Store" in names:
-                skip = names.index(".DS_Store")
-                names.pop(skip)
-                d[i] = names
-            else:
-                d[i] = names
+        sub_dir = os.path.join(path, i)
+        files = sorted([f for f in os.listdir(sub_dir) if not f.startswith('.')])
+        d[i] = [s.replace(".png", "") for s in files]
     return d
 
 
