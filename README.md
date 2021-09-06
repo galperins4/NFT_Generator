@@ -20,7 +20,7 @@ Python NFT Generator
 | total_nft| 2 | How many NFT's you want to mint |
 | rand_seed| 345698135 | Random value for pseudo-random number generator |
 
-2. Update estimated rarity in the section under the config items (See example below). Adjust the folder names to match your project and assign rarity to each layers attrbutes. Rarity order should be based on alphabetical file order in layer folder 
+2. Update estimated rarity in the section under the config items (See example below). Adjust the folder names to match your project and assign rarity to each layers attrbutes. Rarity order should be based on alphabetical file order in layer folder. These values should sum to 1 for each layer.
 
 ```rarity = {"1-background": [0.25, 0.65, 0.10], "2-object": [0.10, 0.90], "3-text": [0.20, 0.30, 0.50]}```
 
