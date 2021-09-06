@@ -21,7 +21,7 @@ Python NFT Generator
 | rand_seed| 345698135 | Random value for pseudo-random number generator |
 
 2. Update estimated rarity in the section under the config items
-```rarity = {"1-background": [0.25, 0.65, 0.10],
+rarity = {"1-background": [0.25, 0.65, 0.10],
           "2-object": [0.10, 0.90],
           "3-text": [0.20, 0.30, 0.50]}```
 
