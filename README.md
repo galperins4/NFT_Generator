@@ -49,6 +49,9 @@ Inspiration for this script was drawn from the public repositories of the creato
 ## Changelog
 
 ### 0.1
+ - Added rarity feature
+
+### 0.1
  - Initial Release
 
 ## License
