@@ -1,7 +1,7 @@
 from PIL import Image
 import json
 import os
-from random import randint
+from random import choices
 from random import seed
 
 dirname = os.path.dirname(__file__)
@@ -11,6 +11,11 @@ project_name = "project name"
 base_uri = "https://ipfs.io/ipfs/"
 total_nft = 2
 rand_seed = 345698135
+
+# rarity - customize for each layer / values
+rarity = {"1-background": [0.25, 0.65, 0.10],
+          "2-object": [0.10, 0.90],
+          "3-text": [0.20, 0.30, 0.50]}
 
 
 def unique_check(all_images):
@@ -89,6 +94,21 @@ def generate_image(all_images):
         with open('./metadata/' + str(k), 'w') as outfile:
             json.dump(token, outfile, indent=4)
 
+            
+def confirm_trait_rarity(mapping):
+
+    counter = 1
+    for k,v in mapping.items():
+        print("Layer {} Values:".format(counter), v)
+        print("Trait Estimated Rarity:", rarity[k], "\n")
+        counter +=1
+
+    answer = ""
+    while answer not in ["y", "n"]:
+        answer = input("Are traits and rarity correct? [Y/N]? ").lower()
+        if answer == "n":
+            print("Please update configuration and restart. Quiting NFT Generator")
+            quit()
 
 def f(path):
     d = {}
@@ -97,7 +117,7 @@ def f(path):
         if i != ".DS_Store":
             # skips .DS_Store
             sub_dir = os.path.join(path, i)
-            files = os.listdir(sub_dir)
+            files = sorted(os.listdir(sub_dir))
             names = [x.replace(".png", "") for x in files]
             if ".DS_Store" in names:
                 skip = names.index(".DS_Store")
@@ -111,7 +131,7 @@ def f(path):
 if __name__ == '__main__':
     attributes_mapping = f("./attributes")
     total_attributes = len(attributes_mapping)
-    attributes = [i for i in attributes_mapping.keys()]
+    confirm_trait_rarity(attributes_mapping)
 
     # generate random images
     images = {}
@@ -121,13 +141,13 @@ if __name__ == '__main__':
         # cycle through attributes
         temp = {}
         for i in attributes_mapping.keys():
-            # get total options for attribute
+            # get values
             values = attributes_mapping[i]
-            options = len(values)
-            r = randint(options, options * options)
-            selection = (r // options)
-            # adjust for index
-            temp.update({i: values[selection-1]})
+            # get rarity weighting
+            weights = rarity[i]
+            selection = choices(values, weights)
+            # add selection
+            temp.update({i: selection[0]})
 
         image[x] = temp
         images.update(image)
