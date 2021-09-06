@@ -22,7 +22,7 @@ Python NFT Generator
 
 2. Update estimated rarity in the section under the config items. Adjust the folder names to match your project and assign rarity to each layers attrbutes. Rarity order should be based on alphabetical file order in layer folder 
 
-'''rarity = {"1-background": [0.25, 0.65, 0.10], "2-object": [0.10, 0.90], "3-text": [0.20, 0.30, 0.50]}```
+```rarity = {"1-background": [0.25, 0.65, 0.10], "2-object": [0.10, 0.90], "3-text": [0.20, 0.30, 0.50]}```
 
 3. Load .png image files into the attributes folders. An few examples have been provided to test the script. The nomenclature of the folders is as follows: layer-attribute. So for example 1-background is the first layer used which contains background images. 
 
