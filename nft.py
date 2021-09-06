@@ -128,7 +128,6 @@ if __name__ == '__main__':
             selection = (r // options)
             # adjust for index
             temp.update({i: values[selection-1]})
-            seed(r)
 
         image[x] = temp
         images.update(image)
