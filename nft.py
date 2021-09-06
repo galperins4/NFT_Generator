@@ -124,7 +124,7 @@ if __name__ == '__main__':
             # get total options for attribute
             values = attributes_mapping[i]
             options = len(values)
-            r = randint(options, options ** options)
+            r = randint(options, options * options)
             selection = (r // options)
             # adjust for index
             temp.update({i: values[selection-1]})
