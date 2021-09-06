@@ -20,10 +20,11 @@ Python NFT Generator
 | total_nft| 2 | How many NFT's you want to mint |
 | rand_seed| 345698135 | Random value for pseudo-random number generator |
 
-2. Update estimated rarity in the section under the config items
+2. Update estimated rarity in the section under the config items. Adjust the folder names to match your project and assign rarity to each layers attrbutes. Rarity order should be based on alphabetical file order in layer folder 
+
 rarity = {"1-background": [0.25, 0.65, 0.10],
           "2-object": [0.10, 0.90],
-          "3-text": [0.20, 0.30, 0.50]}```
+          "3-text": [0.20, 0.30, 0.50]}
 
 3. Load .png image files into the attributes folders. An few examples have been provided to test the script. The nomenclature of the folders is as follows: layer-attribute. So for example 1-background is the first layer used which contains background images. 
 
@@ -33,6 +34,7 @@ Important: All image files should be the same size (e.g., 400 x 400 pixels)
 ``` python3 nft.py```
 
 The script will do the following:
+ - Display a confirmation screen [Y/N] that the attributes/rarity are correct per layer
  - Generate Images
  - Run a duplicate check (Note: this could occur with a low number of attributes/traits)
  - Output NFT images in to the ./images folder
