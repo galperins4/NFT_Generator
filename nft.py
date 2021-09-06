@@ -50,6 +50,8 @@ def generate_mint_stats(all_images, mapping):
     with open('./mint_stats', 'w') as outfile:
         json.dump(stats, outfile, indent=4)
 
+    print(stats)
+
 
 def generate_image(all_images):
     # get images
