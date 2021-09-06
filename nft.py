@@ -1,6 +1,7 @@
 from PIL import Image
 import json
 import os
+import pprint
 from random import choices
 from random import seed
 
@@ -50,7 +51,8 @@ def generate_mint_stats(all_images, mapping):
     with open('./mint_stats', 'w') as outfile:
         json.dump(stats, outfile, indent=4)
 
-    print(stats)
+    print("\nNft Image Statistics")
+    pprint.pprint(stats)
 
 
 def generate_image(all_images):
