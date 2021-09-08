@@ -4,6 +4,7 @@ import os
 import pprint
 from random import choices
 from random import seed
+from utility.nftstorage import NftStorage
 
 dirname = os.path.dirname(__file__)
 
@@ -114,6 +115,13 @@ def confirm_trait_rarity(mapping):
             print("Please update configuration and restart. Quiting NFT Generator")
             quit()
 
+
+def upload_nft_storage():
+    pass
+    #nft = NftStorage()
+          
+                    
+                    
 def f(path):
     d = {}
     dirs = sorted([f for f in os.listdir(path) if not f.startswith('.')])
@@ -156,3 +164,8 @@ if __name__ == '__main__':
 
     # gather stats
     generate_mint_stats(images, attributes_mapping)
+          
+    # TO DO
+    # UPLOAD TO NFT.STORATE AND SAVE OUTPUT
+          
+    upload_nft_storage()
