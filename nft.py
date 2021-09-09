@@ -97,7 +97,7 @@ def generate_image(all_images):
             c = NftStorage(NFTSTORAGE_API_KEY)
             cid = c.upload(file)
             image = base_uri + cid
-            nstorage[str(k)] = [cid]
+            nstorage[str(k)] = {"image_cid": cid}
             time.sleep(0.5)
         else:
             image = base_uri + str(k) + '.png'
@@ -118,7 +118,7 @@ def generate_image(all_images):
         if NFTSTORAGE == 'Y':
             c = NftStorage(NFTSTORAGE_API_KEY)
             cid = c.upload(meta_file)
-            nstorage[str(k)].append([cid])
+            nstorage[str(k)].update({"metadata_cid": cid})
             time.sleep(0.5)
     
     # write out NFT.Storage data
