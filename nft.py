@@ -92,10 +92,12 @@ def generate_image(all_images):
         rgb_im.save(file)  
         
         # If using NFT.Storage and flag is yes, upload file
+        nstorage = {}
         if NFTStorage == 'Y':
             c = NftStorage(NFTStorage_API_KEY)
             cid = c.upload(file)
             image = base_uri + cid
+            nstorage[str(k)] = [cid]
             time.sleep(0.5)
         else:
             image = base_uri + str(k) + '.png'
@@ -111,14 +113,15 @@ def generate_image(all_images):
         meta_file = './metadata/' + str(k)
         with open(meta_file, 'w') as outfile:
             json.dump(token, outfile, indent=4)
-        
-        '''            
+                  
         # If using NFT.Storage - also upload metadata
         if NFTStorage == 'Y':
             c = NftStorage(NFTStorage_API_KEY)
             cid = c.upload(meta_file)
+            nstorage[str(k)].append([cid])
             time.sleep(0.5)
-        ''' 
+
+          
 def confirm_trait_rarity(mapping):
 
     counter = 1
