@@ -19,8 +19,8 @@ Python NFT Generator
 | base_uri | https://ipfs.io/ipfs/ | URI link for where NFT is hosted (e.g., IPFS) |
 | total_nft| 2 | How many NFT's you want to mint |
 | rand_seed| 345698135 | Random value for pseudo-random number generator |
-| NFTSTORAGE| N | Y/N Option - Enables upload of images and metadata jsons to [nft.storage](nft.storage) |
-| NFTSTORAGE_API_KEY| MyKey | [nft.storage](nft.storage) API Key |
+| NFTSTORAGE| N | Y/N Option - Enables upload of images and metadata jsons to [nft.storage](https://nft.storage) |
+| NFTSTORAGE_API_KEY| MyKey | [nft.storage](https://nft.storage) API Key |
 
 2. Update estimated rarity in the section under the config items (See example below). Adjust the folder names to match your project and assign rarity to each layers attrbutes. Rarity order should be based on alphabetical file order in layer folder. These values should sum to 1 for each layer.
 
@@ -41,7 +41,7 @@ The script will do the following:
  - Output Metadata for images in the ./metadata folder
  - Output a mint stats.json file with the full collection statistics (e.g., how many of each attribute/trait was selected)
 
-Note: If using nft.storage functionality - considering running the script disabled first to confirm images. Once everything looks ok, re-rerun the script with the option enabled to upload all images and associated metadata to [nft.storage](nft.storage)
+Note: If using nft.storage functionality - considering running the script disabled first to confirm images. Once everything looks ok, re-rerun the script with the option enabled to upload all images and associated metadata to [nft.storage](https://nft.storage)
 
 ## Credits
 Inspiration for this script was drawn from the public repositories of the creators of BitBirds and Weird Whales. Their main profiles are linked below:
@@ -53,7 +53,7 @@ Inspiration for this script was drawn from the public repositories of the creato
 ## Changelog
 
 ### 0.3
- - Added [nft.storage](nft.storage) functionality
+ - Added [nft.storage](https://nft.storage) functionality
 
 ### 0.2
  - Added rarity feature
