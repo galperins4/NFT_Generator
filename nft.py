@@ -87,21 +87,35 @@ def generate_image(all_images):
 
         # save image
         rgb_im = com.convert('RGB')
-        file = str(k) + ".png"
-        rgb_im.save("./images/" + file)  
+        file = "./images/"+ str(k) + ".png"
+        rgb_im.save(file)  
         
+        # If using NFT.Storage and flag is yes, upload file
+        if NFTStorage == 'Y':
+            c = upload_nft_storage(NFTStorage_API_KEY)
+            cid = c.upload(file)
+            image = base_uri + cid
+        else:
+            image = base_uri + str(k) + 'png'
+                    
         # save metadata
         token = {
-            "image": base_uri + str(k) + '.png',
+            "image": image,
             "tokenId": k,
             "name": project_name + ' ' + str(k),
             "attributes": meta
         }
 
-        with open('./metadata/' + str(k), 'w') as outfile:
+        meta_file = './metadata/' + str(k)
+        with open(meta_file, 'w') as outfile:
             json.dump(token, outfile, indent=4)
-
-            
+        
+        '''            
+        # If using NFT.Storage - also upload metadata
+        if NFTStorage == 'Y':
+            c = upload_nft_storage(NFTStorage_API_KEY)
+            cid = c.upload(meta_file)
+        ''' 
 def confirm_trait_rarity(mapping):
 
     counter = 1
@@ -117,12 +131,6 @@ def confirm_trait_rarity(mapping):
             print("Please update configuration and restart. Quiting NFT Generator")
             quit()
 
-
-def upload_nft_storage():
-    pass
-    #nft = NftStorage()
-          
-                    
                     
 def f(path):
     d = {}
@@ -166,8 +174,3 @@ if __name__ == '__main__':
 
     # gather stats
     generate_mint_stats(images, attributes_mapping)
-          
-    # TO DO
-    # UPLOAD TO NFT.STORATE AND SAVE OUTPUT
-          
-    #upload_nft_storage()
