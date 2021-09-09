@@ -60,6 +60,7 @@ def generate_mint_stats(all_images, mapping):
 
 
 def generate_image(all_images):
+    nstorage = {}
     # get images
     for k, v in all_images.items():
         meta = []
@@ -92,7 +93,6 @@ def generate_image(all_images):
         rgb_im.save(file)  
         
         # If using NFT.Storage and flag is yes, upload file
-        nstorage = {}
         if NFTStorage == 'Y':
             c = NftStorage(NFTStorage_API_KEY)
             cid = c.upload(file)
@@ -120,7 +120,11 @@ def generate_image(all_images):
             cid = c.upload(meta_file)
             nstorage[str(k)].append([cid])
             time.sleep(0.5)
-
+    
+    # write out NFT.Storage data
+    with open('NFT_Storage_Information', 'w') as outfile:
+         json.dump(nstorage, outfile, indent=4)
+        
           
 def confirm_trait_rarity(mapping):
 
