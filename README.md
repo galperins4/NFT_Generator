@@ -41,7 +41,7 @@ The script will do the following:
  - Output Metadata for images in the ./metadata folder
  - Output a mint stats.json file with the full collection statistics (e.g., how many of each attribute/trait was selected)
 
-Note: If using nft.storage functionality - considering running the script disabled first to confirm images. Once everything looks ok, re-rerun the script with the option enabled to upload all images and associated metadata to [nft.storage](https://nft.storage)
+Note: If using [nft.storage](https://nft.storage) functionality - considering running the script disabled first to confirm images. Once everything looks ok, re-rerun the script with the option enabled to upload all images and associated metadata to [nft.storage](https://nft.storage)
 
 ## Credits
 Inspiration for this script was drawn from the public repositories of the creators of BitBirds and Weird Whales. Their main profiles are linked below:
