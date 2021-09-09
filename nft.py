@@ -4,6 +4,7 @@ import os
 import pprint
 from random import choices
 from random import seed
+import time
 from utility.nftstorage import NftStorage
 
 dirname = os.path.dirname(__file__)
@@ -95,6 +96,7 @@ def generate_image(all_images):
             c = NftStorage(NFTStorage_API_KEY)
             cid = c.upload(file)
             image = base_uri + cid
+            time.sleep(0.5)
         else:
             image = base_uri + str(k) + '.png'
                     
@@ -115,6 +117,7 @@ def generate_image(all_images):
         if NFTStorage == 'Y':
             c = NftStorage(NFTStorage_API_KEY)
             cid = c.upload(meta_file)
+            time.sleep(0.5)
         ''' 
 def confirm_trait_rarity(mapping):
 
