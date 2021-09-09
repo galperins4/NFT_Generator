@@ -92,7 +92,7 @@ def generate_image(all_images):
         
         # If using NFT.Storage and flag is yes, upload file
         if NFTStorage == 'Y':
-            c = upload_nft_storage(NFTStorage_API_KEY)
+            c = NftStorage(NFTStorage_API_KEY)
             cid = c.upload(file)
             image = base_uri + cid
         else:
@@ -113,7 +113,7 @@ def generate_image(all_images):
         '''            
         # If using NFT.Storage - also upload metadata
         if NFTStorage == 'Y':
-            c = upload_nft_storage(NFTStorage_API_KEY)
+            c = NftStorage(NFTStorage_API_KEY)
             cid = c.upload(meta_file)
         ''' 
 def confirm_trait_rarity(mapping):
