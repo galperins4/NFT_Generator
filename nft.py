@@ -96,7 +96,7 @@ def generate_image(all_images):
             cid = c.upload(file)
             image = base_uri + cid
         else:
-            image = base_uri + str(k) + 'png'
+            image = base_uri + str(k) + '.png'
                     
         # save metadata
         token = {
