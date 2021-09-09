@@ -88,8 +88,8 @@ def generate_image(all_images):
         # save image
         rgb_im = com.convert('RGB')
         file = str(k) + ".png"
-        rgb_im.save("./images/" + file)
-
+        rgb_im.save("./images/" + file)  
+        
         # save metadata
         token = {
             "image": base_uri + str(k) + '.png',
@@ -170,4 +170,4 @@ if __name__ == '__main__':
     # TO DO
     # UPLOAD TO NFT.STORATE AND SAVE OUTPUT
           
-    upload_nft_storage()
+    #upload_nft_storage()
