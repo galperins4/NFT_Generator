@@ -14,8 +14,8 @@ project_name = "project name"
 base_uri = "https://ipfs.io/ipfs/"
 total_nft = 2
 rand_seed = 345698135
-NFTStorage = "N"
-NFTStorage_API_KEY = "API-KEY"
+NFTSTORAGE = "N"
+NFTSTORAGE_API_KEY = "API-KEY"
 
 # rarity - customize for each layer / values
 rarity = {"1-background": [0.25, 0.65, 0.10],
@@ -93,8 +93,8 @@ def generate_image(all_images):
         rgb_im.save(file)  
         
         # If using NFT.Storage and flag is yes, upload file
-        if NFTStorage == 'Y':
-            c = NftStorage(NFTStorage_API_KEY)
+        if NFTSTORAGE == 'Y':
+            c = NftStorage(NFTSTORAGE_API_KEY)
             cid = c.upload(file)
             image = base_uri + cid
             nstorage[str(k)] = [cid]
@@ -115,8 +115,8 @@ def generate_image(all_images):
             json.dump(token, outfile, indent=4)
                   
         # If using NFT.Storage - also upload metadata
-        if NFTStorage == 'Y':
-            c = NftStorage(NFTStorage_API_KEY)
+        if NFTSTORAGE == 'Y':
+            c = NftStorage(NFTSTORAGE_API_KEY)
             cid = c.upload(meta_file)
             nstorage[str(k)].append([cid])
             time.sleep(0.5)
