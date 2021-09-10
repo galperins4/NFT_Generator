@@ -21,6 +21,8 @@ Python NFT Generator
 | rand_seed| 345698135 | Random value for pseudo-random number generator |
 | NFTSTORAGE| N | Y/N Option - Enables upload of images and metadata jsons to [nft.storage](https://nft.storage) |
 | NFTSTORAGE_API_KEY| MyKey | [nft.storage](https://nft.storage) API Key |
+| PINATA| N | Y/N Option - Enables pinning of images and metadata jsons to [pinata](https://app.pinata.cloud/) |
+| PINATA_JWT| MyJWT | [pinata](https://app.pinata.cloud/) JWT Token |
 
 2. Update estimated rarity in the section under the config items (See example below). Adjust the folder names to match your project and assign rarity to each layers attrbutes. Rarity order should be based on alphabetical file order in layer folder. These values should sum to 1 for each layer.
 
@@ -51,6 +53,9 @@ Inspiration for this script was drawn from the public repositories of the creato
 [benyaminahmed](https://github.com/benyaminahmed)
 
 ## Changelog
+
+### 0.4 
+ - Added [pinata](https://app.pinata.cloud/) functionality
 
 ### 0.3
  - Added [nft.storage](https://nft.storage) functionality
