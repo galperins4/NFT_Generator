@@ -4,6 +4,8 @@ import os
 import pprint
 from random import choices
 from random import seed
+import time
+from utility.nftstorage import NftStorage
 
 dirname = os.path.dirname(__file__)
 
@@ -12,6 +14,8 @@ project_name = "project name"
 base_uri = "https://ipfs.io/ipfs/"
 total_nft = 2
 rand_seed = 345698135
+NFTSTORAGE = "N"
+NFTSTORAGE_API_KEY = "MyKey"
 
 
 # rarity - customize for each layer / values
@@ -57,6 +61,7 @@ def generate_mint_stats(all_images, mapping):
 
 
 def generate_image(all_images):
+    nstorage = {}
     # get images
     for k, v in all_images.items():
         meta = []
@@ -85,21 +90,43 @@ def generate_image(all_images):
 
         # save image
         rgb_im = com.convert('RGB')
-        file = str(k) + ".png"
-        rgb_im.save("./images/" + file)
-
+        file = "./images/"+ str(k) + ".png"
+        rgb_im.save(file)  
+        
+        # If using NFT.Storage and flag is yes, upload file
+        if NFTSTORAGE == 'Y':
+            c = NftStorage(NFTSTORAGE_API_KEY)
+            cid = c.upload(file)
+            image = base_uri + cid
+            nstorage[str(k)] = {"image_cid": cid}
+            time.sleep(0.5)
+        else:
+            image = base_uri + str(k) + '.png'
+                    
         # save metadata
         token = {
-            "image": base_uri + str(k) + '.png',
+            "image": image,
             "tokenId": k,
             "name": project_name + ' ' + str(k),
             "attributes": meta
         }
 
-        with open('./metadata/' + str(k), 'w') as outfile:
+        meta_file = './metadata/' + str(k)
+        with open(meta_file, 'w') as outfile:
             json.dump(token, outfile, indent=4)
-
-            
+                  
+        # If using NFT.Storage - also upload metadata
+        if NFTSTORAGE == 'Y':
+            c = NftStorage(NFTSTORAGE_API_KEY)
+            cid = c.upload(meta_file)
+            nstorage[str(k)].update({"metadata_cid": cid})
+            time.sleep(0.5)
+    
+    # write out NFT.Storage data
+    with open('NFT_Storage_Information', 'w') as outfile:
+         json.dump(nstorage, outfile, indent=4)
+        
+          
 def confirm_trait_rarity(mapping):
 
     counter = 1
@@ -115,6 +142,7 @@ def confirm_trait_rarity(mapping):
             print("Please update configuration and restart. Quiting NFT Generator")
             quit()
 
+                    
 def f(path):
     d = {}
     dirs = sorted([f for f in os.listdir(path) if not f.startswith('.')])
