@@ -12,8 +12,7 @@ project_name = "project name"
 base_uri = "https://ipfs.io/ipfs/"
 total_nft = 2
 rand_seed = 345698135
-NFTStorage = "Y"
-NFTStorage_API_KEY = "API-KEY"
+
 
 # rarity - customize for each layer / values
 rarity = {"1-background": [0.25, 0.65, 0.10],
