@@ -6,6 +6,7 @@ from random import choices
 from random import seed
 import time
 from utility.nftstorage import NftStorage
+from utility.pinata import Pinata
 
 dirname = os.path.dirname(__file__)
 
@@ -16,6 +17,8 @@ total_nft = 2
 rand_seed = 345698135
 NFTSTORAGE = "N"
 NFTSTORAGE_API_KEY = "MyKey"
+PINATA = "N"
+PINATA_JWT = "MyJWT"
 
 
 # rarity - customize for each layer / values
@@ -122,6 +125,15 @@ def generate_image(all_images):
             nstorage[str(k)].update({"metadata_cid": cid})
             time.sleep(0.5)
     
+    # Check if using PINATA and pin to IPFS
+    if PINATA == "Y":
+         p = Pinata(PINATA_JWT)
+         for k, v in nstorage.items():
+              name = k + '.png'
+              p.pin(name, v['image_cid'])
+              meta = k + '.json'
+              p.pin(meta, v['metadata_cid'])
+    
     # write out NFT.Storage data
     with open('NFT_Storage_Information', 'w') as outfile:
          json.dump(nstorage, outfile, indent=4)
@@ -139,7 +151,7 @@ def confirm_trait_rarity(mapping):
     while answer not in ["y", "n"]:
         answer = input("Are traits and rarity correct? [Y/N]? ").lower()
         if answer == "n":
-            print("Please update configuration and restart. Quiting NFT Generator")
+            print("\nPlease update configuration and restart. Quiting NFT Generator")
             quit()
 
                     
