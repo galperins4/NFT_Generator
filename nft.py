@@ -151,7 +151,7 @@ def confirm_trait_rarity(mapping):
     while answer not in ["y", "n"]:
         answer = input("Are traits and rarity correct? [Y/N]? ").lower()
         if answer == "n":
-            print("Please update configuration and restart. Quiting NFT Generator")
+            print("\nPlease update configuration and restart. Quiting NFT Generator")
             quit()
 
                     
