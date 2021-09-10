@@ -42,6 +42,8 @@ The script will do the following:
  - Output NFT images in to the ./images folder
  - Output Metadata for images in the ./metadata folder
  - Output a mint stats.json file with the full collection statistics (e.g., how many of each attribute/trait was selected)
+ - Output a NFT_Storage_Information file with cid's for image and metadata (if [nft.storage](https://nft.storage) is used)
+
 
 Note: If using [nft.storage](https://nft.storage) functionality - considering running the script disabled first to confirm images. Once everything looks ok, re-rerun the script with the option enabled to upload all images and associated metadata to [nft.storage](https://nft.storage)
 
