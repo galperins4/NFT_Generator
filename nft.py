@@ -131,8 +131,6 @@ def generate_image(all_images):
          for k, v in nstorage.items():
               name = project_name + ' ' + k.split('_')[0]
               p.pin(name, v)
-
-    print(nstorage)
           
 
 def update_meta_cid(file, cid):
