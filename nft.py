@@ -119,6 +119,7 @@ def generate_image(all_images):
         }
 
         meta_file = './metadata/' + str(k)
+        meta_file_list.append(meta_file)
         with open(meta_file, 'w') as outfile:
             json.dump(token, outfile, indent=4)
         '''          
