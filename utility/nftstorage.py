@@ -12,8 +12,6 @@ class NftStorage:
         for i in file_list:
             files.append(('file', (i.split('/')[2], open(i, 'rb'), file_type)))
         
-        print(files)
-        quit()
         try:
             response = requests.post(self.url, headers = self.headers, files = files)
             if r.json()['ok'] == True:
