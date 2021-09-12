@@ -145,8 +145,6 @@ def generate_image(all_images):
     with open('NFT_Storage_Information', 'w') as outfile:
          json.dump(nstorage, outfile, indent=4)
     ''' 
-    print(meta_file_list)
-    quit()
     if NFTSTORAGE == 'Y':
          #c = NftStorage(NFTSTORAGE_API_KEY)
          # upload images 
