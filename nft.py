@@ -143,11 +143,12 @@ def generate_image(all_images):
     with open('NFT_Storage_Information', 'w') as outfile:
          json.dump(nstorage, outfile, indent=4)
     ''' 
-    print(file_list)
     if NFTSTORAGE == 'Y':
          c = NftStorage(NFTSTORAGE_API_KEY)
          cid = c.upload(file_list, 'image/png')
          nstorage['image_directory_cid'] = cid
+
+     print(nstorage)
           
 def confirm_trait_rarity(mapping):
 
