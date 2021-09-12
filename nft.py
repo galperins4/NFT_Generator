@@ -167,7 +167,7 @@ def update_meta_cid(file, cid):
              print('old', data['image'])
              img_file = data['image'].replace(base_uri, '')
              data['image'] = base_uri + cid + img_file
-             print('new', data['image']
+             print('new', data['image'])
              quit()
      
           
