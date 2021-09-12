@@ -125,7 +125,17 @@ def generate_image(all_images):
          cid = c.upload(meta_file_list, 'application/json')
          nstorage['metadata_directory_cid'] = cid
 
-    print(nstorage)
+    # Check if using PINATA and pin to IPFS
+    if PINATA == "Y":
+         #p = Pinata(PINATA_JWT)
+         for k, v in nstorage.items():
+              print(k)
+              #name = project name + k
+              #p.pin(name, v['image_cid'])
+              #meta = k + '.json'
+              #p.pin(meta, v['metadata_cid'])
+
+     print(nstorage)
           
 
 def update_meta_cid(file, cid):
