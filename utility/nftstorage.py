@@ -14,8 +14,8 @@ class NftStorage:
         
         try:
             response = requests.post(self.url, headers = self.headers, files = files)
-            if r.json()['ok'] == True:
-                return r.json()['value']['cid']
+            if response.json()['ok'] == True:
+                return response.json()['value']['cid']
         except:
             print("Something went wrong with the upload")
             
