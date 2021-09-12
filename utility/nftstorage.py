@@ -14,7 +14,6 @@ class NftStorage:
         
         try:
             response = requests.post(self.url, headers = self.headers, files = files)
-            print(response.json())
             if response.json()['ok'] == True:
                 return response.json()['value']['cid']
         except:
