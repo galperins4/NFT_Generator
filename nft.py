@@ -129,7 +129,7 @@ def generate_image(all_images):
     if PINATA == "Y":
          p = Pinata(PINATA_JWT)
          for k, v in nstorage.items():
-              name = project_name + k
+              name = project_name + ' ' + k.split('_')[0]
               p.pin(name, v)
 
     print(nstorage)
