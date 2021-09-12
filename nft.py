@@ -164,7 +164,10 @@ def update_meta_cid(file, cid):
     for i in file:
         with open(i) as f:
              data = json.load(f)
-             print(data['image'])
+             print('old', data['image'])
+             img_file = data['image'].replace(base_uri, '')
+             data['image'] = base_uri + cid + img_file
+             print('new', data['image']
              quit()
      
           
