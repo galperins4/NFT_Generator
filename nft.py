@@ -118,7 +118,7 @@ def generate_image(all_images):
             "attributes": meta
         }
 
-        meta_file = './metadata/' + str(k)
+        meta_file = './metadata/' + str(k) + '.json'
         meta_file_list.append(meta_file)
         with open(meta_file, 'w') as outfile:
             json.dump(token, outfile, indent=4)
@@ -168,7 +168,7 @@ def update_meta_cid(file, cid):
              img_file = data['image'].replace(base_uri, '')
              data['image'] = base_uri + cid + '/' + img_file
         
-        with open(i + '.json', 'w') as outfile:
+        with open(i, 'w') as outfile:
             json.dump(data, outfile)
           
           
