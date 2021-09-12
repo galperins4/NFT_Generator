@@ -162,10 +162,10 @@ def generate_image(all_images):
 
 def update_meta_cid(file, cid):
     for i in file:
-        print(i)
-        quit()
-        with open('idata.json') as infile:
-             data = json.load(infile)    
+        with open(i) as f:
+             data = json.load(f)
+             print(data['image'])
+             quit()
      
           
           
