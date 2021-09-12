@@ -98,18 +98,7 @@ def generate_image(all_images):
         file = "./images/"+ str(k) + ".png"
         file_list.append(file)
         rgb_im.save(file)  
-        
-        '''
-        # If using NFT.Storage and flag is yes, upload file
-        if NFTSTORAGE == 'Y':
-            c = NftStorage(NFTSTORAGE_API_KEY)
-            cid = c.upload(file)
-            image = base_uri + cid
-            nstorage[str(k)] = {"image_cid": cid}
-            time.sleep(0.5)
-        else:
-            image = base_uri + str(k) + '.png'
-        '''            
+          
         # save metadata
         token = {
             "image": base_uri + str(k) + '.png',
@@ -122,29 +111,7 @@ def generate_image(all_images):
         meta_file_list.append(meta_file)
         with open(meta_file, 'w') as outfile:
             json.dump(token, outfile, indent=4)
-        '''          
-        # If using NFT.Storage - also upload metadata
-        if NFTSTORAGE == 'Y':
-            c = NftStorage(NFTSTORAGE_API_KEY)
-            cid = c.upload(meta_file)
-            nstorage[str(k)].update({"metadata_cid": cid})
-            time.sleep(0.5)
-        '''
-    '''
-    # Check if using PINATA and pin to IPFS
-    if PINATA == "Y":
-         p = Pinata(PINATA_JWT)
-         for k, v in nstorage.items():
-              name = k + '.png'
-              p.pin(name, v['image_cid'])
-              meta = k + '.json'
-              p.pin(meta, v['metadata_cid'])
-    '''
-    '''
-    # write out NFT.Storage data
-    with open('NFT_Storage_Information', 'w') as outfile:
-         json.dump(nstorage, outfile, indent=4)
-    ''' 
+
     if NFTSTORAGE == 'Y':
          c = NftStorage(NFTSTORAGE_API_KEY)
          # upload images 
