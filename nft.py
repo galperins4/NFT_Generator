@@ -148,20 +148,26 @@ def generate_image(all_images):
     print(meta_file_list)
     quit()
     if NFTSTORAGE == 'Y':
-         c = NftStorage(NFTSTORAGE_API_KEY)
+         #c = NftStorage(NFTSTORAGE_API_KEY)
          # upload images 
-         cid = c.upload(file_list, 'image/png')
+         #cid = c.upload(file_list, 'image/png')
+         cid = '1234567'
          nstorage['image_directory_cid'] = cid
 
          # update Metadata with CID
+         update_meta_cid(meta_file_list, cid)
          
          # upload 
 
     print(nstorage)
           
 
-def update_meta_cid():
-    pass
+def update_meta_cid(file, cid):
+    for i in file:
+        print(i)
+        quit()
+        with open('idata.json') as infile:
+             data = json.load(infile)    
      
           
           
