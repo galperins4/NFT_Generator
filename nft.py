@@ -15,7 +15,7 @@ project_name = "project name"
 base_uri = "https://ipfs.io/ipfs/"
 total_nft = 2
 rand_seed = 345698135
-NFTSTORAGE = "N"
+NFTSTORAGE = "Y"
 NFTSTORAGE_API_KEY = "MyKey"
 PINATA = "N"
 PINATA_JWT = "MyJWT"
@@ -148,7 +148,7 @@ def generate_image(all_images):
          cid = c.upload(file_list, 'image/png')
          nstorage['image_directory_cid'] = cid
 
-     print(nstorage)
+    print(nstorage)
           
 def confirm_trait_rarity(mapping):
 
