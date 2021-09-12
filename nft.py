@@ -130,6 +130,8 @@ def generate_image(all_images):
          #p = Pinata(PINATA_JWT)
          for k, v in nstorage.items():
               print(k)
+              print(v)
+              quit()
               #name = project name + k
               #p.pin(name, v['image_cid'])
               #meta = k + '.json'
