@@ -10,7 +10,7 @@ class NftStorage:
     def upload(self, file_list, file_type):
         files = []
         for i in file_list:
-            files.append(('file':, (i, open(i, 'rb'), file_type)))
+            files.append(('file': (i, open(i, 'rb'), file_type)))
         
         try:
             response = requests.post(self.url, headers = self.headers, files = files)
