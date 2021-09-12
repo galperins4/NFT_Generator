@@ -160,6 +160,7 @@ def generate_image(all_images):
           
 
 def update_meta_cid():
+    pass
      
           
           
