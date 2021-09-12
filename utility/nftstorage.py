@@ -10,6 +10,7 @@ class NftStorage:
     def upload(self, file_list, file_type):
         files = []
         for i in file_list:
+            print(i.split('/')
             files.append(('file', (i, open(i, 'rb'), file_type)))
         
         print(files)
