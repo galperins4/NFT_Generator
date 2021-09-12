@@ -168,8 +168,9 @@ def update_meta_cid(file, cid):
              img_file = data['image'].replace(base_uri, '')
              data['image'] = base_uri + cid + '/' + img_file
              print('new', data['image'])
-             quit()
-     
+        
+        with open(i, 'w') as outfile:
+            json.dump(data, outfile)
           
           
 def confirm_trait_rarity(mapping):
