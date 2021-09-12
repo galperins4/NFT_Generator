@@ -8,13 +8,12 @@ class NftStorage:
         
     
     def upload(self, file_list, file_type):
-        print(file_list)
-        print(file_type)
-        quit()
         files = []
         for i in file_list:
             files.append(('file', (i, open(i, 'rb'), file_type)))
         
+        print(files)
+        quit()
         try:
             response = requests.post(self.url, headers = self.headers, files = files)
             if r.json()['ok'] == True:
