@@ -193,8 +193,7 @@ if __name__ == '__main__':
 
         image[x] = temp
         images.update(image)
-    print(images)
-    quit()
+
     # check uniqueness
     print("Duplicates Detected?", unique_check(images))
 
