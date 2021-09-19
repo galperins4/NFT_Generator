@@ -12,7 +12,7 @@ dirname = os.path.dirname(__file__)
 
 #config items
 project_name = "project name"
-base_uri = "https://ipfs.io/ipfs/"
+base_uri = "ipfs://"
 total_nft = 2
 rand_seed = 345698135
 NFTSTORAGE = "N"
@@ -65,6 +65,8 @@ def generate_mint_stats(all_images, mapping):
 
 def generate_image(all_images):
     nstorage = {}
+    file_list = []
+    meta_file_list = []
     # get images
     for k, v in all_images.items():
         meta = []
@@ -72,7 +74,8 @@ def generate_image(all_images):
         imgnames = [i for i in v.values()]
 
         for x in range(0, len(directories)):
-            att = {directories[x].split("-")[1]: imgnames[x]}
+            att = {"trait_type": directories[x].split("-")[1],
+                   "value": imgnames[x]}
             meta.append(att)
 
         # if only 2 images to combine - single pass
@@ -94,50 +97,52 @@ def generate_image(all_images):
         # save image
         rgb_im = com.convert('RGB')
         file = "./images/"+ str(k) + ".png"
+        file_list.append(file)
         rgb_im.save(file)  
-        
-        # If using NFT.Storage and flag is yes, upload file
-        if NFTSTORAGE == 'Y':
-            c = NftStorage(NFTSTORAGE_API_KEY)
-            cid = c.upload(file)
-            image = base_uri + cid
-            nstorage[str(k)] = {"image_cid": cid}
-            time.sleep(0.5)
-        else:
-            image = base_uri + str(k) + '.png'
-                    
+          
         # save metadata
         token = {
-            "image": image,
+            "image": base_uri + str(k) + '.png',
             "tokenId": k,
             "name": project_name + ' ' + str(k),
             "attributes": meta
         }
 
-        meta_file = './metadata/' + str(k)
+        meta_file = './metadata/' + str(k) + '.json'
+        meta_file_list.append(meta_file)
         with open(meta_file, 'w') as outfile:
             json.dump(token, outfile, indent=4)
-                  
-        # If using NFT.Storage - also upload metadata
-        if NFTSTORAGE == 'Y':
-            c = NftStorage(NFTSTORAGE_API_KEY)
-            cid = c.upload(meta_file)
-            nstorage[str(k)].update({"metadata_cid": cid})
-            time.sleep(0.5)
-    
+
+    if NFTSTORAGE == 'Y':
+         c = NftStorage(NFTSTORAGE_API_KEY)
+         # upload images 
+         cid = c.upload(file_list, 'image/png')
+         nstorage['image_directory_cid'] = cid
+
+         # update Metadata with CID
+         update_meta_cid(meta_file_list, cid)
+         
+         # upload
+         cid = c.upload(meta_file_list, 'application/json')
+         nstorage['metadata_directory_cid'] = cid
+
     # Check if using PINATA and pin to IPFS
     if PINATA == "Y":
          p = Pinata(PINATA_JWT)
          for k, v in nstorage.items():
-              name = k + '.png'
-              p.pin(name, v['image_cid'])
-              meta = k + '.json'
-              p.pin(meta, v['metadata_cid'])
-    
-    # write out NFT.Storage data
-    with open('NFT_Storage_Information', 'w') as outfile:
-         json.dump(nstorage, outfile, indent=4)
+              name = project_name + ' ' + k.split('_')[0]
+              p.pin(name, v)
+          
+
+def update_meta_cid(file, cid):
+    for i in file:
+        with open(i) as f:
+             data = json.load(f)
+             img_file = data['image'].replace(base_uri, '')
+             data['image'] = base_uri + cid + '/' + img_file
         
+        with open(i, 'w') as outfile:
+            json.dump(data, outfile, indent=4)          
           
 def confirm_trait_rarity(mapping):
 
@@ -172,7 +177,7 @@ if __name__ == '__main__':
 
     # generate random images
     images = {}
-    for x in range(0, total_nft):
+    for x in range(1, total_nft+1):
         image = {}
         seed(x+rand_seed)
         # cycle through attributes
