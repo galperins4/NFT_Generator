@@ -12,7 +12,7 @@ dirname = os.path.dirname(__file__)
 
 #config items
 project_name = "project name"
-base_uri = "https://ipfs.io/ipfs/"
+base_uri = "ipfs://"
 total_nft = 2
 rand_seed = 345698135
 NFTSTORAGE = "Y"
