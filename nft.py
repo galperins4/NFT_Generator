@@ -15,7 +15,7 @@ project_name = "project name"
 base_uri = "ipfs://"
 total_nft = 2
 rand_seed = 345698135
-NFTSTORAGE = "Y"
+NFTSTORAGE = "N"
 NFTSTORAGE_API_KEY = "MyKey"
 PINATA = "N"
 PINATA_JWT = "MyJWT"
@@ -176,7 +176,7 @@ if __name__ == '__main__':
 
     # generate random images
     images = {}
-    for x in range(0, total_nft):
+    for x in range(1, total_nft+1):
         image = {}
         seed(x+rand_seed)
         # cycle through attributes
@@ -192,7 +192,8 @@ if __name__ == '__main__':
 
         image[x] = temp
         images.update(image)
-
+    print(images)
+    quit()
     # check uniqueness
     print("Duplicates Detected?", unique_check(images))
 
