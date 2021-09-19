@@ -74,7 +74,8 @@ def generate_image(all_images):
         imgnames = [i for i in v.values()]
 
         for x in range(0, len(directories)):
-            att = {directories[x].split("-")[1]: imgnames[x]}
+            att = {"trait_type": directories[x].split("-")[1],
+                   "value": imgnames[x]}
             meta.append(att)
 
         # if only 2 images to combine - single pass
