@@ -55,6 +55,9 @@ Inspiration for this script was drawn from the public repositories of the creato
 
 ## Changelog
 
+### 0.6
+ - Refactored duplicate checker to remove and duplicates being created
+
 ### 0.5
  - Added bulk upload to IPFS for consisent directory CID
 
