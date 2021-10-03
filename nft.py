@@ -27,17 +27,6 @@ rarity = {"1-background": [0.25, 0.65, 0.10],
           "3-text": [0.20, 0.30, 0.50]}
 
 
-def unique_check(all_images):
-    list_check = [tuple(v.items()) for k, v in all_images.items()]
-
-    if len(list_check) == len(set(list_check)):
-        return False
-    else:
-        duplicates = len(list_check) - len(set(list_check))
-        print("Total Duplicates: ", duplicates) 
-        return True
-
-
 def generate_mint_stats(all_images, mapping):
     stats = {}
 
