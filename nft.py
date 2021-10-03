@@ -220,9 +220,8 @@ if __name__ == '__main__':
         image[x] = output
         images.update(image)
 
-    quit()
     # check uniqueness
-    print("Duplicates Detected?", unique_check(images))
+    # print("Duplicates Detected?", unique_check(images))
 
     # generate all images
     generate_image(images)
