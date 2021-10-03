@@ -194,25 +194,32 @@ if __name__ == '__main__':
     # generate random images
     images = {}
     for x in range(1, total_nft+1):
-        unique_image = 'N'
+        dup_image_check = True
         image = {}
         seed(x+rand_seed)
-        # cycle through attributes
-        output = get_random_selection(attributes_mapping)
-        '''
-        temp = {}
-        for i in attributes_mapping.keys():
-            # get values
-            values = attributes_mapping[i]
-            # get rarity weighting
-            weights = rarity[i]
-            selection = choices(values, weights)
-            # add selection
-            temp.update({i: selection[0]})
-        '''
+        
+        # cycle through attributes and check for uniqueness
+        counter = 1
+        while dup_image_check:
+            output = get_random_selection(attributes_mapping)
+            if len(images) == 0:
+                # this is the first NFT. Skip dup check
+                dup_image_check = False
+            else:
+                checker = list(images.values())
+                if output in checker:
+                    # duplicate
+                    print("Duplicate detected, reselecting")
+                    # update seed
+                    seed(rand_seed-x-counter)
+                else:
+                    # not a duplicate
+                    dup_image_check = False
+
         image[x] = output
         images.update(image)
 
+    quit()
     # check uniqueness
     print("Duplicates Detected?", unique_check(images))
 
