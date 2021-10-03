@@ -216,7 +216,8 @@ if __name__ == '__main__':
                 else:
                     # not a duplicate
                     dup_image_check = False
-
+        
+        image[x] = output
         images.update(image)
 
     # generate all images
