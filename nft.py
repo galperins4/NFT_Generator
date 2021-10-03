@@ -172,6 +172,20 @@ def f(path):
     return d
 
 
+def get_random_selection(attributes):
+    temp = {}
+    for i in attributes.keys():
+        # get values
+        values = attributes[i]
+        # get rarity weighting
+        weights = rarity[i]
+        selection = choices(values, weights)
+        # add selection
+        temp.update({i: selection[0]})
+
+    return temp
+
+
 if __name__ == '__main__':
     attributes_mapping = f("./attributes")
     total_attributes = len(attributes_mapping)
@@ -180,11 +194,13 @@ if __name__ == '__main__':
     # generate random images
     images = {}
     for x in range(1, total_nft+1):
+        unique_image = 'N'
         image = {}
         seed(x+rand_seed)
         # cycle through attributes
+        output = get_random_selection(attributes_mapping)
+        '''
         temp = {}
-        print(images)
         for i in attributes_mapping.keys():
             # get values
             values = attributes_mapping[i]
@@ -193,8 +209,8 @@ if __name__ == '__main__':
             selection = choices(values, weights)
             # add selection
             temp.update({i: selection[0]})
-
-        image[x] = temp
+        '''
+        image[x] = output
         images.update(image)
 
     # check uniqueness
