@@ -208,9 +208,7 @@ if __name__ == '__main__':
             else:
                 checker = list(images.values())
                 if output in checker:
-                    # duplicate
-                    print("Duplicate detected, reselecting")
-                    # update seed
+                    # duplicate - update seed and reselect
                     seed(rand_seed-x-counter)
                     counter += 1
                 else:
