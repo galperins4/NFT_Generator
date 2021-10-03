@@ -212,6 +212,7 @@ if __name__ == '__main__':
                     print("Duplicate detected, reselecting")
                     # update seed
                     seed(rand_seed-x-counter)
+                    counter += 1
                 else:
                     # not a duplicate
                     dup_image_check = False
