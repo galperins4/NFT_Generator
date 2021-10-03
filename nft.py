@@ -33,6 +33,8 @@ def unique_check(all_images):
     if len(list_check) == len(set(list_check)):
         return False
     else:
+        duplicates = len(list_check) - len(set(list_check))
+        print("Total Duplicates: ", duplicates) 
         return True
 
 
