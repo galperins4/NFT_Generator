@@ -184,6 +184,7 @@ if __name__ == '__main__':
         seed(x+rand_seed)
         # cycle through attributes
         temp = {}
+        print(images)
         for i in attributes_mapping.keys():
             # get values
             values = attributes_mapping[i]
